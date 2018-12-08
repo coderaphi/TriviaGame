@@ -25,12 +25,12 @@ var data = [
 const questionTime = 10;
 
 var questionIndex = 0;
-var correctAnswer
-var incorrectAnswer
+var correctAnswer = 0;
+var incorrectAnswer = 0;
 var questionTimer;
 var countDownTimer;
 var answerDisplayTimer;
-var totalAnswered = correctAnswer+ incorrectAnswer;
+
 
 var countDown = questionTime;
 
@@ -65,13 +65,16 @@ function inializeTimer() {
 
 function displaySummary(){
 
-    if (totalAnswered >=4){
+    console.log(questionIndex);
+
+    if (questionIndex === data.length){
     
-        $(".container").hide()
+        $(".answer-container").hide();
 
-    $(".summary").append(`<div><h3>"Number of correct Answers : ${correctAnswer}</h3></div>` )
-
-    return;
+        $(".summary").append(`<div><h3>Number of correct Answers : ${correctAnswer} </h3></div>` );
+        $(".summary").append(`<div><h3>Number of Incorrect Answers : ${incorrectAnswer} </h3></div>` )
+   
+        return;
 
     }
 }
@@ -111,22 +114,30 @@ function askQuestions() {
                 questionIndex++;
                 askQuestions();
                 
+
+                
             } else {
                 //  display correct answer + image
                 displayCorrectAnswer();
                 incorrectAnswer++
+                
             }
-            displaySummary()
+            
 
         });
+    } else {
+        clearTimers();
+        displaySummary();
     }
 }
 
 function continueToNext() {
-    questionIndex++;
-    askQuestions();
-    if (answerDisplayTimer) {
-        clearTimeout(answerDisplayTimer);
+    if (questionIndex < data.length) {
+        questionIndex++;
+        askQuestions();
+        if (answerDisplayTimer) {
+            clearTimeout(answerDisplayTimer);
+        }
     }
 }
 function displayCorrectAnswer() {
@@ -144,13 +155,6 @@ $(document).ready(function() {
         askQuestions();
        
     });
-
-
-
-
-
-
-
 
 });
 

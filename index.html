@@ -20,17 +20,17 @@
         <div class="jumbotron">
             <h1 class="text-center">Trivia Quizz</h1>
             <br>
-            <p>You have 30 seconds to answer each question.</p>
+            <p>You have <span class="count-down-timer" text-align= "center"></span> seconds to answer each question.</p>
         </div>
         
-        <div id="mainArea">
-            <div class="count-down-timer"></div>
-            <p class="text-center main-button-container"><a class="btn btn-warning btn-md btn-block start-button" href="#" role="button">Start Quiz</a></p>
+        <div id="mainArea" >
+            <!-- <div class="count-down-timer"></div> -->
+            <p class="text-center main-button-container" ><a class="btn btn-warning btn-md btn-block start-button" href="#" role="button">Start Quiz</a></p>
             <div class="jumbotron">
 
                 <div class="summary"></div>
 
-                <div class= "container">
+                <div class= "container answer-container" style ='background-color: #2ba6cb;'>
                      <h1 class="text-center question"></h1>
                      <br>
                      <div class="answers"></div>
